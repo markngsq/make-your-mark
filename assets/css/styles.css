@@ -41,11 +41,11 @@ body {
   100% { opacity: 1; }
 }
 .prompt, .command {
-  color: #0c0;
+  color: #aaa;
   text-shadow: 0 0 3px rgba(0,100,0,50);
 }
 .cursor {
-  background: #0c0;
+  background: #aaa;
   animation: blink 1s linear infinite;
   -webkit-animation: blink 1s infinite linear;
   -ms-animation: blink 1s infinite linear;
@@ -55,4 +55,10 @@ body {
   -ms-box-shadow: 0 0 5px rgba(0,100,0,50);
   -o-box-shadow: 0 0 5px rgba(0,100,0,50);
   box-shadow: 0 0 5px rgba(0,100,0,50);
+}
+
+
+.terminal-output > div {
+    /*padding-top: 3px;*/
+    min-height: 24px;
 }

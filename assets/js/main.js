@@ -13,7 +13,7 @@ function Terminal() {
   this.commands = {
     level_1: [
       {
-        commands: ["procrastinate", "do nothing"],
+        commands: ["jaygo", "do nothing"],
         outcome: 0
       },
       {
@@ -55,13 +55,13 @@ function Terminal() {
 
   this.outcomes = {
     0: {
-      image: "assets/img/top.png",
-      text: "You did nothing you dillhole",
+      image: "assets/img/top3.png",
+      text: "It's Jaygo!",
       scoreType: "+"
     },
     1: {
-      image: "assets/img/top.png",
-      text: "Looks like you figured out how to turn on a damn computer!",
+      image: "assets/img/top1.gif",
+      text: "You turn on the computer. \n\nLooks like you figured out how to turn on a damn computer!\n",
       scoreType: ""
     },
     3: {
@@ -129,7 +129,7 @@ Terminal.prototype.init = function() {
       }
       that.currentLevel++;
     } else {
-      term.echo("Oops! That command doesn't seem to exist");
+      term.echo("I don't know what " + command + " means.");
     }
   }, { prompt: '> ', greetings: false });
 
