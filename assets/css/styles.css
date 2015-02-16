@@ -16,6 +16,10 @@ body {
   background-color: transparent;
 }
 
+.terminal-output {
+  margin-bottom: 10px;
+}
+
 @keyframes blink {
   0% { opacity: 1; }
   25% { opacity: 0; }
