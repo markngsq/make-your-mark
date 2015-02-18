@@ -7,7 +7,7 @@ $(document).ready(function() {
 });
 
 function Terminal() {
-  this.currentLevel = "1";
+  this.currentLevel = "0";
   this.currentScore = 5;
   this.scoreUnitVal = 1;
   this.scoreThresholds = {
@@ -29,6 +29,7 @@ function Terminal() {
     }
   };
   this.hints = {
+      level_0: "",
       level_1: "Maybe you should try jaygo, computer, printer, nigel, procrastinate",
       level_2: "chrome, internet explorer, photoshop",
       level_3: "9gag, reddit, facebook, google",
@@ -42,6 +43,12 @@ function Terminal() {
       level_6_2: "submit work, submit",
     };
   this.commands = {
+    level_0: [
+      {
+        commands: ["start"],
+        outcome: "0-start"
+      }
+    ],
     level_1: [
       {
         commands: ["jaygo"],
@@ -190,6 +197,14 @@ function Terminal() {
     ]
   };
   this.outcomes = {
+    // LEVEL 0 OUTCOMES
+    "0-start": {
+      image: "assets/img/start.jpg",
+      text: "",
+      scoreType: "",
+      nextLevel: "1"
+    },
+    
     // LEVEL 1 OUTCOMES
     "1-jaygo": {
       image: "assets/img/top3.png",
@@ -395,7 +410,7 @@ function Terminal() {
       image: "assets/img/top1.gif",
       text: "Your boss appears out of nowhere!",
       scoreType: "",
-      nextLevel: "end"
+      nextLevel: "0"
     }
   };
 }
@@ -410,6 +425,9 @@ Terminal.prototype.init = function() {
     var outcome = null;
     // Get all the commands for the level.
     var levelCommands = that.commands["level_" + that.currentLevel];
+    
+    console.log(that.currentLevel);
+    console.log(levelCommands);
 
     if (command === "/hints") {
       term.echo(that.hints["level_" + that.currentLevel]);
@@ -426,8 +444,6 @@ Terminal.prototype.init = function() {
         }
       });
 
-      console.log(levelCommands);
-      console.log(hasCommand);
       // If command exist, run the outcome for it, else display error message
       if (hasCommand) {
         // Update image
@@ -462,7 +478,6 @@ Terminal.prototype.init = function() {
           }
         }
       } else {
-        console.log(tries);
         if (tries === 3) {
           term.echo(that.hints["level_" + that.currentLevel]);
           tries = 0;
